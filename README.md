@@ -4,3 +4,5 @@
 1. Learn about compilers
 
 This is based on the [`buildyourownlisp`](http://www.buildyourownlisp.com/)
+
+Current Chapter: 7
