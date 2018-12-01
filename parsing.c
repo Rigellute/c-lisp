@@ -16,6 +16,11 @@ char *readline(char *prompt)
 
 void add_history(char *unused) {}
 
+long min(long x, long y)
+{
+    return x <= y ? x : y;
+}
+
 long eval_op(long x, char *op, long y)
 {
     if (strcmp(op, "+") == 0)
@@ -33,6 +38,14 @@ long eval_op(long x, char *op, long y)
     if (strcmp(op, "/") == 0)
     {
         return x / y;
+    }
+    if (strcmp(op, "%") == 0)
+    {
+        return x % y;
+    }
+    if (strcmp(op, "min") == 0)
+    {
+        return min(x, y);
     }
 
     return 0;
@@ -80,7 +93,7 @@ int main(int argc, char **argv)
     mpca_lang(MPCA_LANG_DEFAULT,
               "                                                     \
       number   : /[+-]?([0-9]*[.])?[0-9]+/ ;                             \
-      operator : '+' | '-' | '*' | '/' | '%' ;                  \
+      operator : '+' | '-' | '*' | '/' | '%' | \"min\";                  \
       expr     : <number> | '(' <operator> <expr>+ ')' ;  \
       lispy    : /^/ <operator> <expr>+ /$/ ;             \
     ",
