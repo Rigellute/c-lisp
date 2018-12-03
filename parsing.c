@@ -16,6 +16,10 @@ char *readline(char *prompt)
 
 void add_history(char *unused) {}
 
+#else
+#include <editline/readline.h>
+#endif
+
 long min(long x, long y)
 {
     return x <= y ? x : y;
@@ -74,11 +78,6 @@ long eval(mpc_ast_t *t)
 
     return x;
 }
-
-#else
-#include <editline/readline.h>
-#include <editline/history.h>
-#endif
 
 int main(int argc, char **argv)
 {
